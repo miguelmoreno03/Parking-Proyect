@@ -1,103 +1,105 @@
 -- ===============================
---  CREAR BASE DE DATOS
+-- CREATE DATABASE
 -- ===============================
-CREATE DATABASE IF NOT EXISTS parqueadero_db;
-USE parqueadero_db;
+CREATE DATABASE IF NOT EXISTS parking_db;
+USE parking_db;
 
 -- ===============================
--- Crear tabla USUARIOS
+-- CREATE TABLE USERS
 -- ===============================
-CREATE TABLE usuario (
+CREATE TABLE user (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL,
+    name VARCHAR(100) NOT NULL,
     username VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
-    rol ENUM('ADMIN', 'OPERADOR') NOT NULL,
-    activo BOOLEAN DEFAULT TRUE,
+    role ENUM('ADMIN', 'OPERATOR') NOT NULL,
+    active BOOLEAN DEFAULT TRUE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- ===============================
--- Crear tabla TARIFAS
+-- CREATE TABLE RATES
 -- ===============================
-CREATE TABLE tarifa (
+CREATE TABLE rate (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    tipo ENUM('ESTUDIANTE', 'NORMAL') NOT NULL UNIQUE,
-    precio_por_minuto DECIMAL(10,2) NOT NULL
+    type ENUM('STUDENT', 'NORMAL') NOT NULL UNIQUE,
+    price_per_minute DECIMAL(10,2) NOT NULL
 );
 
 -- ===============================
--- crear tabla CONFIGURACIÓN
+-- CREATE TABLE CONFIGURATION
 -- ===============================
-CREATE TABLE configuracion (
+CREATE TABLE configuration (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    capacidad_total INT NOT NULL,
-    espacios_disponibles INT NOT NULL
+    total_capacity INT NOT NULL,
+    available_spaces INT NOT NULL
 );
 
 -- ===============================
--- 🚗 REGISTROS (CORE DEL SISTEMA)
+-- CREATE TABLE RECORDS 
 -- ===============================
-CREATE TABLE registro (
+CREATE TABLE record (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
 
-    ticket_codigo VARCHAR(50) NOT NULL UNIQUE, 
+    ticket_code VARCHAR(50) NOT NULL UNIQUE,
 
-    placa VARCHAR(10) NOT NULL,
-    estudiante BOOLEAN NOT NULL,
+    plate VARCHAR(10) NOT NULL,
+    is_student BOOLEAN NOT NULL,
 
-    hora_entrada DATETIME NOT NULL,
-    hora_salida DATETIME,
+    entry_time DATETIME NOT NULL,
+    exit_time DATETIME,
 
-    tiempo_minutos BIGINT,
-    valor_pagado DECIMAL(10,2),
+    total_minutes BIGINT,
+    amount_paid DECIMAL(10,2),
 
-    estado ENUM('ACTIVO', 'FINALIZADO') NOT NULL,
+    status ENUM('ACTIVE', 'FINISHED') NOT NULL,
 
-    usuario_id BIGINT NOT NULL,
-    tarifa_id BIGINT NOT NULL,
+    user_id BIGINT NOT NULL,
+    rate_id BIGINT NOT NULL,
 
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT fk_registro_usuario
-        FOREIGN KEY (usuario_id) REFERENCES usuario(id),
+    CONSTRAINT fk_record_user
+        FOREIGN KEY (user_id) REFERENCES user(id),
 
-    CONSTRAINT fk_registro_tarifa
-        FOREIGN KEY (tarifa_id) REFERENCES tarifa(id)
+    CONSTRAINT fk_record_rate
+        FOREIGN KEY (rate_id) REFERENCES rate(id)
 );
 
-
-CREATE INDEX idx_registro_ticket ON registro(ticket_codigo);
-CREATE INDEX idx_registro_estado ON registro(estado);
-CREATE INDEX idx_registro_placa ON registro(placa);
+-- ===============================
+-- INDEXES
+-- ===============================
+CREATE INDEX idx_record_ticket ON record(ticket_code);
+CREATE INDEX idx_record_status ON record(status);
+CREATE INDEX idx_record_plate ON record(plate);
 
 -- ===============================
--- DATOS INICIALES (OPCIONAL)
+-- INITIAL DATA (OPTIONAL)
 -- ===============================
 
 -- --------------------------------------------------
--- Inserta tarifas por defecto:
--- NORMAL → tarifa estándar
--- ESTUDIANTE → tarifa reducida
+-- Default rates:
+-- NORMAL → standard rate
+-- STUDENT → discounted rate
 -- --------------------------------------------------
--- INSERT INTO tarifa (tipo, precio_por_minuto) VALUES
+-- INSERT INTO rate (type, price_per_minute) VALUES
 -- ('NORMAL', 100),
--- ('ESTUDIANTE', 70);
+-- ('STUDENT', 70);
 
 
 -- --------------------------------------------------
--- Configuración inicial del parqueadero:
--- capacidad_total → número máximo de vehículos
--- espacios_disponibles → inicia igual a la capacidad
+-- Initial configuration:
+-- total_capacity → max number of vehicles
+-- available_spaces → starts equal to capacity
 -- --------------------------------------------------
--- INSERT INTO configuracion (capacidad_total, espacios_disponibles)
+-- INSERT INTO configuration (total_capacity, available_spaces)
 -- VALUES (50, 50);
 
 
 -- --------------------------------------------------
--- Usuario administrador inicial:
--- Permite acceder al sistema por primera vez
--- ⚠️ En producción se recomienda encriptar contraseña
+-- Initial admin user:
+-- Allows first system access
+-- ⚠️ In production, password must be encrypted
 -- --------------------------------------------------
--- INSERT INTO usuario (nombre, username, password, rol)
--- VALUES ('Administrador', 'admin', 'admin123', 'ADMIN');
+-- INSERT INTO user (name, username, password, role)
+-- VALUES ('Administrator', 'admin', 'admin123', 'ADMIN');

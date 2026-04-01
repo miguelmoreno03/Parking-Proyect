@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 @Repository
 public interface RateRepository extends JpaRepository <Rate,Long> {
-
     Optional<Rate> findByType(Type type);
+    boolean existingByType(Type type);
 }

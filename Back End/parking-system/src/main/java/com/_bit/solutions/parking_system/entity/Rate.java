@@ -28,6 +28,4 @@ public class Rate {
     @OneToMany(mappedBy = "rate")
     private List<Record> records;
 
-
-
 }

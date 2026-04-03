@@ -9,6 +9,6 @@ import lombok.Setter;
 @Setter
 public class RateUpdateDTO {
     private Type type;
-    @Positive(message = "El precio debe ser mayor a 0")
+    @Positive(message = "The price must be greater than 0")
     private Double pricePerMinute;
 }

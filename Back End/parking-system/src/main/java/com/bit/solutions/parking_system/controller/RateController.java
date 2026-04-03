@@ -9,6 +9,7 @@ import com.bit.solutions.parking_system.mappers.RateMapper;
 import com.bit.solutions.parking_system.service.interfaces.RateService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -61,10 +62,10 @@ public class RateController {
         Rate updated = rateService.updateRate(id, rate);
         return RateMapper.toDTO(updated);
     }
-
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
+    public ResponseEntity<String> delete(@PathVariable Long id) {
         rateService.deleteRate(id);
+        return ResponseEntity.ok("Rate with id "+id+" was successfully deleted");
     }
 
 }

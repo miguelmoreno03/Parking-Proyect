@@ -20,36 +20,36 @@ public class RateServiceImpl implements RateService {
 
     @Override
     public List<Rate> getAllRates() {
-        log.debug("Obteniendo todos los rates");
+        log.debug("Fetching all rates");
         return rateRepository.findAll();
     }
 
     @Override
     public Rate getRateById(Long id) {
-        log.debug("Buscando rate por id={}", id);
+        log.debug("Fetching rate by id={}", id);
         return rateRepository.findById(id)
                 .orElseThrow(() -> {
-                    log.warn("Rate no encontrado con id={}", id);
-                    return new ResourceNotFoundException("Rate no encontrado con id: " + id);
+                    log.warn("Rate not found with id={}", id);
+                    return new ResourceNotFoundException("Rate not found with id " + id);
                 });
     }
 
     @Override
     public Rate getRateByType(Type type) {
-        log.debug("Buscando rate por type={}", type);
+        log.debug("Fetching rate by type={}", type);
         return rateRepository.findByType(type)
                 .orElseThrow(() -> {
-                    log.warn("Rate no encontrado con type={}", type);
-                    return new ResourceNotFoundException("Rate no encontrado con tipo: " + type);
+                    log.warn("Rate not found with type={}", type);
+                    return new ResourceNotFoundException("Rate not found with type " + type);
                 });
     }
 
     @Override
     public Rate createRate(Rate rate) {
-        log.debug("Creando rate: {}", rate);
+        log.debug("Creating rate: {}", rate);
         if (rate.getType() == null) {
-            log.warn("Intento de crear rate sin tipo");
-            throw new BadRequestException("El tipo es obligatorio");
+            log.warn("Attempted to create rate without type");
+            throw new BadRequestException("The type is required");
         }
        validatePrice(rate.getPricePerMinute());
         validateUniqueType(rate.getType());
@@ -60,11 +60,11 @@ public class RateServiceImpl implements RateService {
 
     @Override
     public Rate updateRate(Long id, Rate rate) {
-        log.debug("Actualizando rate con id={}", id);
+        log.debug("Updating rate with id={}", id);
         Rate existing = rateRepository.findById(id)
                 .orElseThrow(() -> {
-                    log.warn("Rate no encontrado para actualizar id={}", id);
-                    return new ResourceNotFoundException("Rate no encontrado con id: " + id);
+                    log.warn("Rate not found for update with id={}", id);
+                    return new ResourceNotFoundException("Rate not found for update with id: " + id);
                 });
        validatePrice(rate.getPricePerMinute());
         if (rate.getType() != null && !rate.getType().equals(existing.getType())) {
@@ -80,27 +80,27 @@ public class RateServiceImpl implements RateService {
 
     @Override
     public void deleteRate(Long id) {
-        log.debug("Eliminando rate con id={}", id);
+        log.debug("Deleting rate with id={}", id);
         Rate existing = rateRepository.findById(id)
                 .orElseThrow(() -> {
-                    log.warn("Rate no encontrado para eliminar id={}", id);
-                    return new ResourceNotFoundException("Rate no encontrado con id: " + id);
+                    log.warn("Rate not found for deletion with id={}", id);
+                    return new ResourceNotFoundException("Rate not found with id: " + id);
                 });
         rateRepository.delete(existing);
-        log.info("Rate eliminado con id={}", id);
+        log.info("Rate deleted successfully with id={}", id);
     }
 
     private void validatePrice(Double price) {
         if (price != null && price <= 0) {
-            log.warn("Precio inválido: {}", price);
-            throw new BadRequestException("El precio por minuto debe ser mayor a 0");
+            log.warn("Invalid price value {}", price);
+            throw new BadRequestException("The price per minute must be greater than zero");
         }
     }
 
     private void validateUniqueType(Type type) {
         if (rateRepository.findByType(type).isPresent()) {
-            log.warn("Ya existe un rate con type={}", type);
-            throw new BadRequestException("Ya existe un rate con este tipo");
+            log.warn("A rate with the specified type already exists={}", type);
+            throw new BadRequestException("A rate for this type already exists");
         }
     }
 }

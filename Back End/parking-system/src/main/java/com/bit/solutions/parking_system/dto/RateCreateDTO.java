@@ -9,10 +9,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class RateCreateDTO {
-    @NotNull(message = "El tipo es obligatorio")
+    @NotNull(message = "Type is required")
     private Type type;
-    @NotNull(message = "El precio es obligatorio")
-    @Positive(message = "El precio debe ser mayor a 0")
+    @NotNull(message = "Price is required")
+    @Positive(message = "The price must be greater than 0")
     private Double pricePerMinute;
 }
 

@@ -1,6 +1,7 @@
 -- ===============================
 -- CREATE DATABASE
 -- ===============================
+DROP DATABASE IF EXISTS parking_db;
 CREATE DATABASE IF NOT EXISTS parking_db;
 USE parking_db;
 
@@ -58,6 +59,7 @@ CREATE TABLE record (
     rate_id BIGINT NOT NULL,
 
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT fk_record_user
         FOREIGN KEY (user_id) REFERENCES user(id),
@@ -102,4 +104,4 @@ CREATE INDEX idx_record_plate ON record(plate);
 -- ⚠️ In production, password must be encrypted
 -- --------------------------------------------------
 -- INSERT INTO user (name, username, password, role)
--- VALUES ('Administrator', 'admin', 'admin123', 'ADMIN');
+-- VALUES ('Administrator', 'admin', 'admin123', 'ADMIN');userpassword

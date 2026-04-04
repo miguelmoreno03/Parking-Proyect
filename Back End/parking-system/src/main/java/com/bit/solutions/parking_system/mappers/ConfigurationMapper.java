@@ -4,7 +4,8 @@ import com.bit.solutions.parking_system.dto.ConfigurationResponseDTO;
 import com.bit.solutions.parking_system.dto.ConfigurationUpdateDTO;
 import com.bit.solutions.parking_system.entity.Configuration;
 
-public class ConfigurationMapper {
+public final class ConfigurationMapper {
+    private ConfigurationMapper(){}
         // CREATE
         public static Configuration toEntity(ConfigurationCreateDTO dto) {
             if (dto == null) return null;

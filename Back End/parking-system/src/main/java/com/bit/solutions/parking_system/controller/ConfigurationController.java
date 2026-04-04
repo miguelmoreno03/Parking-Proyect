@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
+
 @RestController
 @RequestMapping("/config")
 @RequiredArgsConstructor
@@ -17,30 +19,37 @@ public class ConfigurationController {
     private final ConfigurationService configurationService;
 
     @GetMapping("/{id}")
-    public ConfigurationResponseDTO getById(@PathVariable Long id) {
+    public ResponseEntity<ConfigurationResponseDTO> getById(@PathVariable Long id) {
         Configuration config = configurationService.getConfigurationById(id);
-        return ConfigurationMapper.toDTO(config);
+        if (config == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(ConfigurationMapper.toDTO(config));
     }
 
     @PostMapping
-    public ConfigurationResponseDTO create(
+    public ResponseEntity<ConfigurationResponseDTO> create(
             @Valid @RequestBody ConfigurationCreateDTO dto) {
-
         Configuration config = ConfigurationMapper.toEntity(dto);
         Configuration saved = configurationService.createConfiguration(config);
 
-        return ConfigurationMapper.toDTO(saved);
+        return ResponseEntity
+                .created(URI.create("/config/" + saved.getId()))
+                .body(ConfigurationMapper.toDTO(saved));
     }
 
     @PatchMapping("/{id}")
-    public ConfigurationResponseDTO update(
+    public ResponseEntity<ConfigurationResponseDTO> update(
             @PathVariable Long id,
             @Valid @RequestBody ConfigurationUpdateDTO dto) {
 
         Configuration config = ConfigurationMapper.toEntity(dto);
         Configuration updated = configurationService.updateConfiguration(id, config);
 
-        return ConfigurationMapper.toDTO(updated);
+        if (updated == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(ConfigurationMapper.toDTO(updated));
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<String> delete(@PathVariable Long id) {

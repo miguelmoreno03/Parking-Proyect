@@ -12,6 +12,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -22,36 +24,44 @@ public class RateController {
     private final RateService rateService;
 
     @GetMapping
-    public List<RateResponseDTO> getAll() {
+    public ResponseEntity<List<RateResponseDTO>> getAll() {
         List<Rate> rates = rateService.getAllRates();
-        List<RateResponseDTO> response = new java.util.ArrayList<>();
+        List<RateResponseDTO> response = new ArrayList<>();
         for (Rate rate : rates) {
             response.add(RateMapper.toDTO(rate));
         }
-        return response;
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/{id}")
-    public RateResponseDTO getById(@PathVariable Long id) {
+    public ResponseEntity<RateResponseDTO> getById(@PathVariable Long id) {
         Rate rate = rateService.getRateById(id);
-        return RateMapper.toDTO(rate);
+        if (rate == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(RateMapper.toDTO(rate));
     }
 
     @GetMapping("/type/{type}")
-    public RateResponseDTO getByType(@PathVariable Type type) {
+    public ResponseEntity <RateResponseDTO> getByType(@PathVariable Type type) {
         Rate rate = rateService.getRateByType(type);
-        return RateMapper.toDTO(rate);
+        if (rate == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(RateMapper.toDTO(rate));
     }
 
     @PostMapping
-    public RateResponseDTO create(@Valid @RequestBody RateCreateDTO dto) {
+    public ResponseEntity< RateResponseDTO> create(@Valid @RequestBody RateCreateDTO dto) {
         Rate rate = RateMapper.toEntity(dto);
         Rate saved = rateService.createRate(rate);
-        return RateMapper.toDTO(saved);
+        return ResponseEntity
+                .created(URI.create("/rates/"+saved.getId()))
+                .body(RateMapper.toDTO(saved));
     }
 
     @PatchMapping("/{id}")
-    public RateResponseDTO update(
+    public ResponseEntity<RateResponseDTO> update(
             @PathVariable Long id,
             @Valid @RequestBody RateUpdateDTO dto) {
 
@@ -60,7 +70,10 @@ public class RateController {
         rate.setPricePerMinute(dto.getPricePerMinute());
 
         Rate updated = rateService.updateRate(id, rate);
-        return RateMapper.toDTO(updated);
+        if (updated == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(RateMapper.toDTO(updated));
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<String> delete(@PathVariable Long id) {

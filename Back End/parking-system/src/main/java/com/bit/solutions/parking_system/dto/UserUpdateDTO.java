@@ -1,7 +1,6 @@
 package com.bit.solutions.parking_system.dto;
 
 import com.bit.solutions.parking_system.entity.enums.Role;
-import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 

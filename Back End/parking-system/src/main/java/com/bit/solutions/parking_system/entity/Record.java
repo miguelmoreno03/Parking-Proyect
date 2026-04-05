@@ -3,6 +3,7 @@ import com.bit.solutions.parking_system.entity.enums.Status;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
 @Table(name = "record")
@@ -21,9 +22,6 @@ public class Record {
 
     @Column(nullable = false, length = 10)
     private String plate;
-
-    @Column(name = "is_student", nullable = false)
-    private Boolean isStudent;
 
     @Column(name = "entry_time", nullable = false)
     private LocalDateTime entryTime;
@@ -55,6 +53,13 @@ public class Record {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
+    @PrePersist
+    public void prePersist() {
+        this.createdAt = LocalDateTime.now();
+        if (this.ticketCode == null || this.ticketCode.isBlank()) {
+            this.ticketCode = UUID.randomUUID().toString().substring(0, 8).toUpperCase();
+        }
+    }
     @PreUpdate
     public void preUpdate() {
         this.updatedAt = LocalDateTime.now();

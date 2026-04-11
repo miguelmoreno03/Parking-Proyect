@@ -1,6 +1,7 @@
 package com.bit.solutions.parking_system.dto;
 
 import com.bit.solutions.parking_system.entity.enums.Status;
+import com.bit.solutions.parking_system.notification.enums.NotificationMethod;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,7 +20,9 @@ import java.time.LocalDateTime;
         "amountPaid",
         "status",
         "type",
-        "userId"
+        "userId",
+        "notificationMethod",
+        "notificationTarget"
 })
 public class RecordResponseDTO {
     private Long id;
@@ -32,4 +35,6 @@ public class RecordResponseDTO {
     private Status status;
     private String type;
     private Long userId;
+    private NotificationMethod notificationMethod;
+    private String notificationTarget;
 }

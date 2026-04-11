@@ -1,5 +1,6 @@
 package com.bit.solutions.parking_system.entity;
 import com.bit.solutions.parking_system.entity.enums.Status;
+import com.bit.solutions.parking_system.notification.enums.NotificationMethod;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
@@ -38,6 +39,12 @@ public class Record {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
     private Status status;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    private NotificationMethod notificationMethod;
+    @Column(name = "notification_target")
+    private String notificationTarget;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)

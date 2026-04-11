@@ -6,6 +6,7 @@ import com.bit.solutions.parking_system.entity.enums.Status;
 import com.bit.solutions.parking_system.entity.enums.Type;
 import com.bit.solutions.parking_system.exceptions.BadRequestException;
 import com.bit.solutions.parking_system.exceptions.ResourceNotFoundException;
+import com.bit.solutions.parking_system.notification.service.interfaces.NotificationService;
 import com.bit.solutions.parking_system.repository.RateRepository;
 import com.bit.solutions.parking_system.repository.RecordRepository;
 import com.bit.solutions.parking_system.repository.UserRepository;
@@ -24,6 +25,7 @@ public class RecordServiceImpl implements RecordService {
     private final RecordRepository recordRepository;
     private final UserRepository userRepository;
     private final RateRepository rateRepository;
+    private final NotificationService notificationService;
 
     @Override
     public List<Record> getAllRecords() {
@@ -62,6 +64,7 @@ public class RecordServiceImpl implements RecordService {
         record.setRate(rate);
         record.setEntryTime(LocalDateTime.now());
         Record saved = recordRepository.save(record);
+        notificationService.sendNotification(saved);
         log.info("Record created successfully with id={} and ticketCode={}", saved.getId(), saved.getTicketCode());
         return saved;
     }

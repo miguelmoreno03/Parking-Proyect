@@ -16,6 +16,8 @@ public final class RecordMapper {
                 .plate(dto.getPlate().toUpperCase().trim())
                 .entryTime(LocalDateTime.now())
                 .status(Status.ACTIVE)
+                .notificationMethod(dto.getNotificationMethod())
+                .notificationTarget(dto.getNotificationTarget())
                 .build();
     }
 
@@ -43,6 +45,8 @@ public final class RecordMapper {
                 .status(entity.getStatus())
                 .type(entity.getRate() != null ? entity.getRate().getType().name() : null)
                 .userId(entity.getUser() != null ? entity.getUser().getId() : null)
+                .notificationMethod(entity.getNotificationMethod())
+                .notificationTarget(entity.getNotificationTarget())
                 .build();
     }
 }

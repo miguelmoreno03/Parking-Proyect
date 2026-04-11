@@ -45,7 +45,6 @@ CREATE TABLE record (
     ticket_code VARCHAR(50) NOT NULL UNIQUE,
 
     plate VARCHAR(10) NOT NULL,
-    is_student BOOLEAN NOT NULL,
 
     entry_time DATETIME NOT NULL,
     exit_time DATETIME,
@@ -54,12 +53,12 @@ CREATE TABLE record (
     amount_paid DECIMAL(10,2),
 
     status ENUM('ACTIVE', 'FINISHED') NOT NULL,
-
+    notification_method ENUM('SMS', 'WHATSAPP','EMAIL') NOT NULL,
+    notification_target varchar(50) NOT NULL,
     user_id BIGINT NOT NULL,
     rate_id BIGINT NOT NULL,
-
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT fk_record_user
         FOREIGN KEY (user_id) REFERENCES user(id),

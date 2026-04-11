@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Ticket</title>
+</head>
+<body style="margin:0; padding:0; background-color:#f5f5f5; font-family:Arial, Helvetica, sans-serif;">
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f5f5f5; margin:0; padding:0;">
+    <tr>
+        <td align="center" style="padding:24px 12px;">
+
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:560px; background-color:#ffffff; border:1px solid #e5e7eb;">
+
+                <!-- HEADER -->
+                <tr>
+                    <td style="padding:32px 32px 20px 32px;">
+                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                                <td valign="top" style="padding-right:12px;">
+                                    <div style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#6b7280; margin-bottom:6px;">
+                                        Parking
+                                    </div>
+                                    <div style="font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:34px; line-height:38px; font-weight:900; text-transform:uppercase; color:#111111; letter-spacing:-1px;">
+                                        Parking Project
+                                    </div>
+                                </td>
+                                <td valign="top" align="right" style="white-space:nowrap;">
+                                    <div style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#6b7280; margin-bottom:6px;">
+                                        Status
+                                    </div>
+                                    <div style="display:inline-block; background-color:#111111; color:#ffffff; font-size:12px; font-weight:700; text-transform:uppercase; padding:8px 14px;">
+                                        Valid
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <!-- TITLE -->
+                <tr>
+                    <td style="padding:0 32px 28px 32px;">
+                        <div style="font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:46px; line-height:44px; font-weight:900; text-transform:uppercase; color:#111111; letter-spacing:-1.5px;">
+                            Parking Ticket
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- DATA CARD -->
+                <tr>
+                    <td style="padding:0 32px 0 32px;">
+                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f9fafb; border:1px solid #e5e7eb;">
+                            <tr>
+                                <td style="padding:20px 22px; border-bottom:1px solid #e5e7eb;">
+                                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                                        <tr>
+                                            <td style="font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#6b7280;">
+                                                Rate Type
+                                            </td>
+                                            <td align="right" style="font-size:22px; font-weight:700; color:#111111;">
+                                                <span th:text="${rateType}">NORMAL</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="padding:20px 22px; border-bottom:1px solid #e5e7eb;">
+                                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                                        <tr>
+                                            <td style="font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#6b7280;">
+                                                Plate Number
+                                            </td>
+                                            <td align="right" style="font-size:22px; font-weight:700; color:#111111;">
+                                                <span th:text="${plate}">XYZ123</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="padding:20px 22px;">
+                                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                                        <tr>
+                                            <td style="font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#6b7280;">
+                                                Entry Time
+                                            </td>
+                                            <td align="right" style="font-size:15px; font-weight:500; color:#111111; text-transform:uppercase;">
+                                                <span th:text="${entryTime}">11/04/2026 08:35</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <!-- LOGO -->
+                <tr>
+                    <td align="center" style="padding:34px 20px 14px 20px;">
+                        <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                                <td align="center" style="border:1px solid #d1d5db; background-color:#ffffff; padding:12px; width:96px; height:96px;">
+                                    <img
+                                            th:src="|cid:parkingLogo|"
+                                            src="cid:parkingLogo"
+                                            alt="Parking Project Logo"
+                                            width="72"
+                                            style="display:block; border:0; outline:none; text-decoration:none; width:72px; height:auto;"
+                                    >
+                                </td>
+                            </tr>
+                        </table>
+
+                        <div style="margin-top:12px; font-size:11px; letter-spacing:3px; font-weight:700; text-transform:uppercase; color:#111111;">
+                            Parking Project
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- DIVIDER -->
+                <tr>
+                    <td style="padding:18px 32px 0 32px;">
+                        <div style="border-top:2px dashed #c7cdd4; line-height:2px; font-size:2px;">&nbsp;</div>
+                    </td>
+                </tr>
+
+                <!-- QR -->
+                <tr>
+                    <td align="center" style="padding:30px 20px 28px 20px;">
+                        <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                                <td align="center" style="border:1px solid #d1d5db; background-color:#ffffff; padding:12px;">
+                                    <img
+                                            th:src="|cid:qrCodeImage|"
+                                            src="cid:qrCodeImage"
+                                            alt="QR Code"
+                                            width="180"
+                                            style="display:block; border:0; outline:none; text-decoration:none; width:180px; height:auto;"
+                                    >
+                                </td>
+                            </tr>
+                        </table>
+
+                        <div style="margin-top:18px; max-width:280px; font-size:12px; line-height:18px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#6b7280; text-align:center;">
+                            Please keep this ticket for exit validation.
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- DIVIDER -->
+                <tr>
+                    <td style="padding:0 32px;">
+                        <div style="border-top:2px dashed #d4d4d8; line-height:2px; font-size:2px;">&nbsp;</div>
+                    </td>
+                </tr>
+
+                <!-- FOOTER -->
+                <tr>
+                    <td style="padding:18px 32px 24px 32px;">
+                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                                <td align="left" style="font-size:12px; line-height:18px; color:#9ca3af; font-family:'Courier New', Courier, monospace;">
+                                    REF: 9920-X88
+                                </td>
+                                <td align="center" style="font-size:12px; line-height:18px; color:#9ca3af; font-family:'Courier New', Courier, monospace;">
+                                    GATE: N-04
+                                </td>
+                                <td align="right" style="font-size:12px; line-height:18px; color:#9ca3af; font-family:'Courier New', Courier, monospace;">
+                                    ACTIVE
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+            </table>
+
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

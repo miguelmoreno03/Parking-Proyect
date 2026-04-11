@@ -6,6 +6,7 @@ import com.bit.solutions.parking_system.entity.enums.Status;
 import com.bit.solutions.parking_system.entity.enums.Type;
 import com.bit.solutions.parking_system.exceptions.BadRequestException;
 import com.bit.solutions.parking_system.exceptions.ResourceNotFoundException;
+import com.bit.solutions.parking_system.notification.enums.NotificationMethod;
 import com.bit.solutions.parking_system.notification.service.interfaces.NotificationService;
 import com.bit.solutions.parking_system.repository.RateRepository;
 import com.bit.solutions.parking_system.repository.RecordRepository;
@@ -50,6 +51,11 @@ public class RecordServiceImpl implements RecordService {
             log.warn("Attempt to create duplicate active record for plate={}", record.getPlate());
             throw new BadRequestException("There is already an active record for this plate");
         }
+        validateNotificationData(
+                record.getNotificationMethod(),
+                record.getNotificationTarget()
+        );
+
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> {
                     log.warn("User not found with id={}", userId);
@@ -159,4 +165,32 @@ public class RecordServiceImpl implements RecordService {
         log.debug("Fetching active records");
         return recordRepository.findByStatus(Status.ACTIVE);
     }
+    private void validateNotificationData(NotificationMethod method, String target) {
+        if (method == null) {
+            throw new BadRequestException("Notification method is required");
+        }
+
+        if (target == null || target.isBlank()) {
+            throw new BadRequestException("Notification target is required");
+        }
+
+        String cleanTarget = target.trim();
+
+        switch (method) {
+            case EMAIL:
+                if (!cleanTarget.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
+                    throw new BadRequestException("Invalid email format");
+                }
+                break;
+
+            case SMS:
+            case WHATSAPP:
+                if (!cleanTarget.matches("^\\+?[0-9]{7,15}$")) {
+                    throw new BadRequestException("Invalid phone number format");
+                }
+                break;
+
+            default:
+                throw new BadRequestException("Unsupported notification method");
+        }}
 }

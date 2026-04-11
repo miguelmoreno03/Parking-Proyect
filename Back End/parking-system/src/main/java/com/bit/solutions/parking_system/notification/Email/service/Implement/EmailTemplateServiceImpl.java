@@ -1,5 +1,5 @@
-package com.bit.solutions.parking_system.notification.Email.Implement;
-import com.bit.solutions.parking_system.notification.Email.Interfaces.EmailTemplateService;
+package com.bit.solutions.parking_system.notification.Email.service.Implement;
+import com.bit.solutions.parking_system.notification.Email.service.Interfaces.EmailTemplateService;
 import com.bit.solutions.parking_system.entity.Record;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

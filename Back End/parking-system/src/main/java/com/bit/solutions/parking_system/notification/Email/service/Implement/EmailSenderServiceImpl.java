@@ -1,7 +1,7 @@
-package com.bit.solutions.parking_system.notification.Email.Implement;
+package com.bit.solutions.parking_system.notification.Email.service.Implement;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.mail.javamail.JavaMailSender;
-import com.bit.solutions.parking_system.notification.Email.Interfaces.EmailSenderService;
+import com.bit.solutions.parking_system.notification.Email.service.Interfaces.EmailSenderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.mail.javamail.MimeMessageHelper;

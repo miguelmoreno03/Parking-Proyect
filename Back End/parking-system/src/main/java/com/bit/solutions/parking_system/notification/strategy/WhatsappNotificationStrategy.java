@@ -2,12 +2,19 @@ package com.bit.solutions.parking_system.notification.strategy;
 
 import com.bit.solutions.parking_system.entity.Record;
 import com.bit.solutions.parking_system.notification.enums.NotificationMethod;
+import com.bit.solutions.parking_system.notification.whatsapp.service.interfaces.WhatsappSenderService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.time.format.DateTimeFormatter;
+
 @Component
 @Slf4j
+@RequiredArgsConstructor
 public class WhatsappNotificationStrategy implements NotificationStrategy{
+    private final WhatsappSenderService whatsappSenderService;
+
     @Override
     public boolean supports(NotificationMethod method) {
         return NotificationMethod.WHATSAPP.equals(method);
@@ -20,21 +27,33 @@ public class WhatsappNotificationStrategy implements NotificationStrategy{
             return;
         }
 
+        String phoneNumber = record.getNotificationTarget();
+
+        if (phoneNumber == null || phoneNumber.isBlank()) {
+            log.warn("Record id={} has no phone number configured for WhatsApp", record.getId());
+            return;
+        }
+
         String message = buildMessage(record);
 
-        log.info("Sending WhatsApp notification. message='{}'", message);
-
-        // Aquí después irá la integración real con proveedor de WhatsApp
-        // Ejemplo futuro:
-        // 1. obtener teléfono del usuario
-        // 2. construir mensaje
-        // 3. llamar API externa
+        whatsappSenderService.sendWhatsapp(phoneNumber, message);
     }
 
     private String buildMessage(Record record) {
-        return "Hello, your parking ticket was created successfully. " +
-                "Plate: " + record.getPlate() +
-                ", Entry time: " + record.getEntryTime() +
-                ", Ticket code: " + record.getTicketCode();
+        String formattedEntryTime = record.getEntryTime() != null
+                ? record.getEntryTime().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))
+                : "";
+
+        String rateType = record.getRate() != null && record.getRate().getType() != null
+                ? record.getRate().getType().name()
+                : "";
+
+        return "🎟️ Your parking ticket was created successfully.\n" +
+                "🏷️ Rate type: " + rateType + "\n" +
+                "🚗 Plate: " + record.getPlate() + "\n" +
+                "🕒 Entry time: " + formattedEntryTime + "\n" +
+                "🧾 Ticket code: " + record.getTicketCode() + "\n" +
+                "Please keep this code for exit validation.";
     }
 }
+

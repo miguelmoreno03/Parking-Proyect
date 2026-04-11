@@ -1200,3 +1200,317 @@ This generated password is for development use only. Your security configuration
 2026-04-11T12:19:16.851-05:00  INFO 11568 --- [parking-system] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2026-04-11T12:19:16.855-05:00  INFO 11568 --- [parking-system] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2026-04-11T12:19:16.866-05:00  INFO 11568 --- [parking-system] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-11T12:24:59.631-05:00  INFO 8128 --- [parking-system] [main] c.b.s.p.ParkingSystemApplication         : Starting ParkingSystemApplication using Java 17.0.13 with PID 8128 (D:\JavaProjects\Parking-Project\Back End\parking-system\target\classes started by PC in D:\JavaProjects\Parking-Project\Back End\parking-system)
+2026-04-11T12:24:59.635-05:00  INFO 8128 --- [parking-system] [main] c.b.s.p.ParkingSystemApplication         : No active profile set, falling back to 1 default profile: "default"
+2026-04-11T12:25:01.106-05:00  INFO 8128 --- [parking-system] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-11T12:25:01.210-05:00  INFO 8128 --- [parking-system] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 89 ms. Found 4 JPA repository interfaces.
+2026-04-11T12:25:02.053-05:00  INFO 8128 --- [parking-system] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-11T12:25:02.071-05:00  INFO 8128 --- [parking-system] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-11T12:25:02.072-05:00  INFO 8128 --- [parking-system] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-11T12:25:02.158-05:00  INFO 8128 --- [parking-system] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 2456 ms
+2026-04-11T12:25:02.435-05:00  INFO 8128 --- [parking-system] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-11T12:25:02.500-05:00  INFO 8128 --- [parking-system] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.7.Final
+2026-04-11T12:25:03.181-05:00  INFO 8128 --- [parking-system] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-11T12:25:03.216-05:00  INFO 8128 --- [parking-system] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-11T12:25:03.384-05:00  INFO 8128 --- [parking-system] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@cfb94fd
+2026-04-11T12:25:03.386-05:00  INFO 8128 --- [parking-system] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-11T12:25:03.464-05:00  INFO 8128 --- [parking-system] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/parking_db?useSSL=false&serverTimezone=UTC]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 9.6
+	Default catalog/schema: parking_db/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-11T12:25:04.521-05:00  INFO 8128 --- [parking-system] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-11T12:25:04.528-05:00  INFO 8128 --- [parking-system] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-11T12:25:04.618-05:00  INFO 8128 --- [parking-system] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-11T12:25:05.299-05:00  WARN 8128 --- [parking-system] [main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 6a0eec29-be34-485a-b966-caa1b544d4e6
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-04-11T12:25:05.312-05:00  INFO 8128 --- [parking-system] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-04-11T12:25:06.177-05:00  INFO 8128 --- [parking-system] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-11T12:25:06.191-05:00  INFO 8128 --- [parking-system] [main] c.b.s.p.ParkingSystemApplication         : Started ParkingSystemApplication in 7.151 seconds (process running for 8.376)
+2026-04-11T12:25:06.196-05:00  WARN 8128 --- [parking-system] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-04-11T12:25:06.196-05:00  WARN 8128 --- [parking-system] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-04-11T12:25:45.554-05:00  INFO 8128 --- [parking-system] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-11T12:25:45.554-05:00  INFO 8128 --- [parking-system] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-11T12:25:45.557-05:00  INFO 8128 --- [parking-system] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-04-11T12:25:46.413-05:00  INFO 8128 --- [parking-system] [http-nio-8080-exec-1] c.b.s.p.s.implement.RecordServiceImpl    : Record finished successfully ticketCode=29639D00 totalMinutes=14 amountPaid=560.0
+2026-04-11T12:25:58.729-05:00  INFO 8128 --- [parking-system] [http-nio-8080-exec-3] c.b.s.p.n.s.EmailNotificationStrategy    : Parking ticket email sent successfully to=miguelangelmorenomogollon@gmail.com for ticketCode=2028B59F
+2026-04-11T12:25:58.730-05:00  INFO 8128 --- [parking-system] [http-nio-8080-exec-3] c.b.s.p.s.implement.RecordServiceImpl    : Record created successfully with id=5 and ticketCode=2028B59F
+2026-04-11T12:27:29.573-05:00  INFO 8128 --- [parking-system] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-11T12:27:29.608-05:00  INFO 8128 --- [parking-system] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-11T12:27:29.615-05:00  INFO 8128 --- [parking-system] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-11T12:27:29.619-05:00  INFO 8128 --- [parking-system] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-11T12:27:29.627-05:00  INFO 8128 --- [parking-system] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-11T16:30:13.366-05:00  INFO 2992 --- [parking-system] [main] c.b.s.p.ParkingSystemApplication         : Starting ParkingSystemApplication using Java 17.0.13 with PID 2992 (D:\JavaProjects\Parking-Project\Back End\parking-system\target\classes started by PC in D:\JavaProjects\Parking-Project\Back End\parking-system)
+2026-04-11T16:30:13.389-05:00  INFO 2992 --- [parking-system] [main] c.b.s.p.ParkingSystemApplication         : No active profile set, falling back to 1 default profile: "default"
+2026-04-11T16:30:17.080-05:00  INFO 2992 --- [parking-system] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-11T16:30:17.574-05:00  INFO 2992 --- [parking-system] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 458 ms. Found 4 JPA repository interfaces.
+2026-04-11T16:30:19.868-05:00  INFO 2992 --- [parking-system] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-11T16:30:19.896-05:00  INFO 2992 --- [parking-system] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-11T16:30:19.896-05:00  INFO 2992 --- [parking-system] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-11T16:30:20.136-05:00  INFO 2992 --- [parking-system] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 6535 ms
+2026-04-11T16:30:20.825-05:00  INFO 2992 --- [parking-system] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-11T16:30:21.248-05:00  INFO 2992 --- [parking-system] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.7.Final
+2026-04-11T16:30:22.954-05:00  INFO 2992 --- [parking-system] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-11T16:30:23.064-05:00  INFO 2992 --- [parking-system] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-11T16:30:23.532-05:00  INFO 2992 --- [parking-system] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2c0a3826
+2026-04-11T16:30:23.537-05:00  INFO 2992 --- [parking-system] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-11T16:30:23.746-05:00  INFO 2992 --- [parking-system] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/parking_db?useSSL=false&serverTimezone=UTC]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 9.6
+	Default catalog/schema: parking_db/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-11T16:30:26.300-05:00  INFO 2992 --- [parking-system] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-11T16:30:26.315-05:00  INFO 2992 --- [parking-system] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-11T16:30:26.470-05:00  INFO 2992 --- [parking-system] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-11T16:30:27.665-05:00  WARN 2992 --- [parking-system] [main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 5da4f46d-af18-41ce-b8c3-ac33491b872c
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-04-11T16:30:27.714-05:00  INFO 2992 --- [parking-system] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-04-11T16:30:29.731-05:00  INFO 2992 --- [parking-system] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-11T16:30:29.747-05:00  INFO 2992 --- [parking-system] [main] c.b.s.p.ParkingSystemApplication         : Started ParkingSystemApplication in 17.946 seconds (process running for 19.295)
+2026-04-11T16:30:29.755-05:00  WARN 2992 --- [parking-system] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-04-11T16:30:29.755-05:00  WARN 2992 --- [parking-system] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-04-11T16:30:35.905-05:00  INFO 2992 --- [parking-system] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-11T16:30:35.906-05:00  INFO 2992 --- [parking-system] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-11T16:30:35.910-05:00  INFO 2992 --- [parking-system] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2026-04-11T16:30:37.286-05:00  WARN 2992 --- [parking-system] [http-nio-8080-exec-1] c.b.s.p.s.implement.RecordServiceImpl    : Attempt to create duplicate active record for plate=WQZ18H
+2026-04-11T16:30:37.294-05:00  WARN 2992 --- [parking-system] [http-nio-8080-exec-1] c.b.s.p.exceptions.GlobalExceptions      : HTTP 400 BAD_REQUEST | traceId=8ee131eb-4ed5-4587-9756-80070f9d957b | path=/records | method=POST | exception=BadRequestException | message=There is already an active record for this plate
+2026-04-11T16:30:58.057-05:00  INFO 2992 --- [parking-system] [http-nio-8080-exec-5] c.b.s.p.s.implement.RecordServiceImpl    : Record finished successfully ticketCode=2028B59F totalMinutes=245 amountPaid=9800.0
+2026-04-11T16:31:44.592-05:00  INFO 2992 --- [parking-system] [http-nio-8080-exec-6] c.b.s.p.n.s.s.i.SmsSenderServiceImpl     : SMS sent successfully to=+573208571256 sid=SM96dc2bc475d3e8c97949584e64384a5e
+2026-04-11T16:31:44.593-05:00  INFO 2992 --- [parking-system] [http-nio-8080-exec-6] c.b.s.p.s.implement.RecordServiceImpl    : Record created successfully with id=6 and ticketCode=7685CD85
+2026-04-11T16:34:17.909-05:00  INFO 2992 --- [parking-system] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-11T16:34:17.950-05:00  INFO 2992 --- [parking-system] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-11T16:34:17.957-05:00  INFO 2992 --- [parking-system] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-11T16:34:17.960-05:00  INFO 2992 --- [parking-system] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-11T16:34:17.972-05:00  INFO 2992 --- [parking-system] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-11T16:38:19.168-05:00  INFO 11964 --- [parking-system] [main] c.b.s.p.ParkingSystemApplication         : Starting ParkingSystemApplication using Java 17.0.13 with PID 11964 (D:\JavaProjects\Parking-Project\Back End\parking-system\target\classes started by PC in D:\JavaProjects\Parking-Project\Back End\parking-system)
+2026-04-11T16:38:19.175-05:00  INFO 11964 --- [parking-system] [main] c.b.s.p.ParkingSystemApplication         : No active profile set, falling back to 1 default profile: "default"
+2026-04-11T16:38:21.598-05:00  INFO 11964 --- [parking-system] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-11T16:38:21.755-05:00  INFO 11964 --- [parking-system] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 135 ms. Found 4 JPA repository interfaces.
+2026-04-11T16:38:22.910-05:00  INFO 11964 --- [parking-system] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-11T16:38:22.937-05:00  INFO 11964 --- [parking-system] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-11T16:38:22.937-05:00  INFO 11964 --- [parking-system] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-11T16:38:23.067-05:00  INFO 11964 --- [parking-system] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 3806 ms
+2026-04-11T16:38:23.429-05:00  INFO 11964 --- [parking-system] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-11T16:38:23.520-05:00  INFO 11964 --- [parking-system] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.7.Final
+2026-04-11T16:38:24.404-05:00  INFO 11964 --- [parking-system] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-11T16:38:24.464-05:00  INFO 11964 --- [parking-system] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-11T16:38:24.774-05:00  INFO 11964 --- [parking-system] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@10dbf660
+2026-04-11T16:38:24.778-05:00  INFO 11964 --- [parking-system] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-11T16:38:24.877-05:00  INFO 11964 --- [parking-system] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/parking_db?useSSL=false&serverTimezone=UTC]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 9.6
+	Default catalog/schema: parking_db/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-11T16:38:26.021-05:00  INFO 11964 --- [parking-system] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-11T16:38:26.029-05:00  INFO 11964 --- [parking-system] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-11T16:38:26.127-05:00  INFO 11964 --- [parking-system] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-11T16:38:26.863-05:00  WARN 11964 --- [parking-system] [main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 85f8aee7-21df-4354-bf0d-8eb70f052cd8
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-04-11T16:38:26.875-05:00  INFO 11964 --- [parking-system] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-04-11T16:38:27.880-05:00  INFO 11964 --- [parking-system] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-11T16:38:27.894-05:00  INFO 11964 --- [parking-system] [main] c.b.s.p.ParkingSystemApplication         : Started ParkingSystemApplication in 9.68 seconds (process running for 10.589)
+2026-04-11T16:38:27.901-05:00  WARN 11964 --- [parking-system] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-04-11T16:38:27.901-05:00  WARN 11964 --- [parking-system] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-04-11T16:38:51.773-05:00  INFO 11964 --- [parking-system] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-11T16:38:51.774-05:00  INFO 11964 --- [parking-system] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-11T16:38:51.779-05:00  INFO 11964 --- [parking-system] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2026-04-11T16:38:53.012-05:00  INFO 11964 --- [parking-system] [http-nio-8080-exec-1] c.b.s.p.s.implement.RecordServiceImpl    : Record finished successfully ticketCode=7685CD85 totalMinutes=7 amountPaid=280.0
+2026-04-11T16:39:07.260-05:00  INFO 11964 --- [parking-system] [http-nio-8080-exec-3] c.b.s.p.n.s.s.i.SmsSenderServiceImpl     : SMS sent successfully to=+573208571256 sid=SM131c8d4f5f5344e5dd176b1acc32734b
+2026-04-11T16:39:07.261-05:00  INFO 11964 --- [parking-system] [http-nio-8080-exec-3] c.b.s.p.s.implement.RecordServiceImpl    : Record created successfully with id=7 and ticketCode=D8BCD3D8
+2026-04-11T16:39:20.566-05:00  WARN 11964 --- [parking-system] [http-nio-8080-exec-4] c.b.s.p.s.implement.RecordServiceImpl    : Attempt to create duplicate active record for plate=WQZ18H
+2026-04-11T16:39:20.569-05:00  WARN 11964 --- [parking-system] [http-nio-8080-exec-4] c.b.s.p.exceptions.GlobalExceptions      : HTTP 400 BAD_REQUEST | traceId=52622932-ec3e-4c86-8d02-8ec99e20b2c3 | path=/records | method=POST | exception=BadRequestException | message=There is already an active record for this plate
+2026-04-11T16:39:39.765-05:00  INFO 11964 --- [parking-system] [http-nio-8080-exec-7] c.b.s.p.s.implement.RecordServiceImpl    : Record finished successfully ticketCode=D8BCD3D8 totalMinutes=0 amountPaid=0.0
+2026-04-11T16:39:44.279-05:00  INFO 11964 --- [parking-system] [http-nio-8080-exec-8] c.b.s.p.n.s.s.i.SmsSenderServiceImpl     : SMS sent successfully to=+573208571256 sid=SM0ff5d50db052d2f0cddc2312fdd6ad5f
+2026-04-11T16:39:44.279-05:00  INFO 11964 --- [parking-system] [http-nio-8080-exec-8] c.b.s.p.s.implement.RecordServiceImpl    : Record created successfully with id=8 and ticketCode=47A8E4E4
+2026-04-11T16:40:09.760-05:00  INFO 11964 --- [parking-system] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-11T16:40:09.805-05:00  INFO 11964 --- [parking-system] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-11T16:40:09.812-05:00  INFO 11964 --- [parking-system] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-11T16:40:09.815-05:00  INFO 11964 --- [parking-system] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-11T16:40:09.823-05:00  INFO 11964 --- [parking-system] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-11T16:40:16.325-05:00  INFO 16780 --- [parking-system] [main] c.b.s.p.ParkingSystemApplication         : Starting ParkingSystemApplication using Java 17.0.13 with PID 16780 (D:\JavaProjects\Parking-Project\Back End\parking-system\target\classes started by PC in D:\JavaProjects\Parking-Project\Back End\parking-system)
+2026-04-11T16:40:16.334-05:00  INFO 16780 --- [parking-system] [main] c.b.s.p.ParkingSystemApplication         : No active profile set, falling back to 1 default profile: "default"
+2026-04-11T16:40:18.475-05:00  INFO 16780 --- [parking-system] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-11T16:40:18.606-05:00  INFO 16780 --- [parking-system] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 108 ms. Found 4 JPA repository interfaces.
+2026-04-11T16:40:19.713-05:00  INFO 16780 --- [parking-system] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-11T16:40:19.729-05:00  INFO 16780 --- [parking-system] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-11T16:40:19.729-05:00  INFO 16780 --- [parking-system] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-11T16:40:19.835-05:00  INFO 16780 --- [parking-system] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 3381 ms
+2026-04-11T16:40:20.170-05:00  INFO 16780 --- [parking-system] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-11T16:40:20.261-05:00  INFO 16780 --- [parking-system] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.7.Final
+2026-04-11T16:40:21.232-05:00  INFO 16780 --- [parking-system] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-11T16:40:21.288-05:00  INFO 16780 --- [parking-system] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-11T16:40:21.491-05:00  INFO 16780 --- [parking-system] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@99223ac
+2026-04-11T16:40:21.494-05:00  INFO 16780 --- [parking-system] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-11T16:40:21.622-05:00  INFO 16780 --- [parking-system] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/parking_db?useSSL=false&serverTimezone=UTC]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 9.6
+	Default catalog/schema: parking_db/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-11T16:40:22.978-05:00  INFO 16780 --- [parking-system] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-11T16:40:22.988-05:00  INFO 16780 --- [parking-system] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-11T16:40:23.160-05:00  INFO 16780 --- [parking-system] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-11T16:40:24.266-05:00  WARN 16780 --- [parking-system] [main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: fb9e7b4b-9e2b-433c-948f-c01ea3bb17a9
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-04-11T16:40:24.284-05:00  INFO 16780 --- [parking-system] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-04-11T16:40:25.417-05:00  INFO 16780 --- [parking-system] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-11T16:40:25.432-05:00  INFO 16780 --- [parking-system] [main] c.b.s.p.ParkingSystemApplication         : Started ParkingSystemApplication in 10.404 seconds (process running for 11.474)
+2026-04-11T16:40:25.440-05:00  WARN 16780 --- [parking-system] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-04-11T16:40:25.441-05:00  WARN 16780 --- [parking-system] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-04-11T16:40:33.813-05:00  INFO 16780 --- [parking-system] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-11T16:40:33.814-05:00  INFO 16780 --- [parking-system] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-11T16:40:33.817-05:00  INFO 16780 --- [parking-system] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-04-11T16:40:35.146-05:00  INFO 16780 --- [parking-system] [http-nio-8080-exec-2] c.b.s.p.s.implement.RecordServiceImpl    : Record finished successfully ticketCode=47A8E4E4 totalMinutes=0 amountPaid=0.0
+2026-04-11T16:40:44.963-05:00  INFO 16780 --- [parking-system] [http-nio-8080-exec-4] c.b.s.p.n.s.s.i.SmsSenderServiceImpl     : SMS sent successfully to=+573208571256 sid=SM566098bb6f0d4bc0991900bf28ef8b15
+2026-04-11T16:40:44.964-05:00  INFO 16780 --- [parking-system] [http-nio-8080-exec-4] c.b.s.p.s.implement.RecordServiceImpl    : Record created successfully with id=9 and ticketCode=990CDA31
+2026-04-11T16:42:30.593-05:00  INFO 16780 --- [parking-system] [http-nio-8080-exec-7] c.b.s.p.s.implement.RecordServiceImpl    : Record finished successfully ticketCode=990CDA31 totalMinutes=1 amountPaid=40.0
+2026-04-11T16:43:15.756-05:00  INFO 16780 --- [parking-system] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-11T16:43:15.802-05:00  INFO 16780 --- [parking-system] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-11T16:43:15.810-05:00  INFO 16780 --- [parking-system] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-11T16:43:15.814-05:00  INFO 16780 --- [parking-system] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-11T16:43:15.826-05:00  INFO 16780 --- [parking-system] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-11T16:43:21.517-05:00  INFO 8464 --- [parking-system] [main] c.b.s.p.ParkingSystemApplication         : Starting ParkingSystemApplication using Java 17.0.13 with PID 8464 (D:\JavaProjects\Parking-Project\Back End\parking-system\target\classes started by PC in D:\JavaProjects\Parking-Project\Back End\parking-system)
+2026-04-11T16:43:21.522-05:00  INFO 8464 --- [parking-system] [main] c.b.s.p.ParkingSystemApplication         : No active profile set, falling back to 1 default profile: "default"
+2026-04-11T16:43:23.109-05:00  INFO 8464 --- [parking-system] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-11T16:43:23.210-05:00  INFO 8464 --- [parking-system] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 89 ms. Found 4 JPA repository interfaces.
+2026-04-11T16:43:24.275-05:00  INFO 8464 --- [parking-system] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-11T16:43:24.296-05:00  INFO 8464 --- [parking-system] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-11T16:43:24.296-05:00  INFO 8464 --- [parking-system] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-11T16:43:24.430-05:00  INFO 8464 --- [parking-system] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 2829 ms
+2026-04-11T16:43:24.868-05:00  INFO 8464 --- [parking-system] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-11T16:43:24.951-05:00  INFO 8464 --- [parking-system] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.7.Final
+2026-04-11T16:43:25.883-05:00  INFO 8464 --- [parking-system] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-11T16:43:25.925-05:00  INFO 8464 --- [parking-system] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-11T16:43:26.140-05:00  INFO 8464 --- [parking-system] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@10dbf660
+2026-04-11T16:43:26.141-05:00  INFO 8464 --- [parking-system] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-11T16:43:26.250-05:00  INFO 8464 --- [parking-system] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/parking_db?useSSL=false&serverTimezone=UTC]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 9.6
+	Default catalog/schema: parking_db/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-11T16:43:27.713-05:00  INFO 8464 --- [parking-system] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-11T16:43:27.726-05:00  INFO 8464 --- [parking-system] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-11T16:43:27.885-05:00  INFO 8464 --- [parking-system] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-11T16:43:28.875-05:00  WARN 8464 --- [parking-system] [main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 2fc52803-2622-4b1e-ab3b-8d0d29e0befa
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-04-11T16:43:28.897-05:00  INFO 8464 --- [parking-system] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-04-11T16:43:30.238-05:00  INFO 8464 --- [parking-system] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-11T16:43:30.257-05:00  INFO 8464 --- [parking-system] [main] c.b.s.p.ParkingSystemApplication         : Started ParkingSystemApplication in 9.701 seconds (process running for 10.565)
+2026-04-11T16:43:30.263-05:00  WARN 8464 --- [parking-system] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-04-11T16:43:30.264-05:00  WARN 8464 --- [parking-system] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-04-11T16:43:36.411-05:00  INFO 8464 --- [parking-system] [http-nio-8080-exec-4] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-11T16:43:36.412-05:00  INFO 8464 --- [parking-system] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-11T16:43:36.416-05:00  INFO 8464 --- [parking-system] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2026-04-11T16:43:39.032-05:00  INFO 8464 --- [parking-system] [http-nio-8080-exec-4] c.b.s.p.n.s.s.i.SmsSenderServiceImpl     : SMS sent successfully to=+573208571256 sid=SMac262fad8f2697f64dcc136c600dbdc8
+2026-04-11T16:43:39.032-05:00  INFO 8464 --- [parking-system] [http-nio-8080-exec-4] c.b.s.p.s.implement.RecordServiceImpl    : Record created successfully with id=10 and ticketCode=F5ABB723
+2026-04-11T16:44:15.434-05:00  INFO 8464 --- [parking-system] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-11T16:44:15.472-05:00  INFO 8464 --- [parking-system] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-11T16:44:15.478-05:00  INFO 8464 --- [parking-system] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-11T16:44:15.481-05:00  INFO 8464 --- [parking-system] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-11T16:44:15.488-05:00  INFO 8464 --- [parking-system] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-11T16:49:10.686-05:00  INFO 9572 --- [parking-system] [main] c.b.s.p.ParkingSystemApplication         : Starting ParkingSystemApplication using Java 17.0.13 with PID 9572 (D:\JavaProjects\Parking-Project\Back End\parking-system\target\classes started by PC in D:\JavaProjects\Parking-Project\Back End\parking-system)
+2026-04-11T16:49:10.694-05:00  INFO 9572 --- [parking-system] [main] c.b.s.p.ParkingSystemApplication         : No active profile set, falling back to 1 default profile: "default"
+2026-04-11T16:49:12.633-05:00  INFO 9572 --- [parking-system] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-11T16:49:12.765-05:00  INFO 9572 --- [parking-system] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 119 ms. Found 4 JPA repository interfaces.
+2026-04-11T16:49:14.114-05:00  INFO 9572 --- [parking-system] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-11T16:49:14.166-05:00  INFO 9572 --- [parking-system] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-11T16:49:14.167-05:00  INFO 9572 --- [parking-system] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-11T16:49:14.350-05:00  INFO 9572 --- [parking-system] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 3543 ms
+2026-04-11T16:49:14.691-05:00  INFO 9572 --- [parking-system] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-11T16:49:14.780-05:00  INFO 9572 --- [parking-system] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.7.Final
+2026-04-11T16:49:15.563-05:00  INFO 9572 --- [parking-system] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-11T16:49:15.625-05:00  INFO 9572 --- [parking-system] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-11T16:49:15.832-05:00  INFO 9572 --- [parking-system] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@69ab2d6a
+2026-04-11T16:49:15.833-05:00  INFO 9572 --- [parking-system] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-11T16:49:15.927-05:00  INFO 9572 --- [parking-system] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/parking_db?useSSL=false&serverTimezone=UTC]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 9.6
+	Default catalog/schema: parking_db/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-11T16:49:17.094-05:00  INFO 9572 --- [parking-system] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-11T16:49:17.102-05:00  INFO 9572 --- [parking-system] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-11T16:49:17.198-05:00  INFO 9572 --- [parking-system] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-11T16:49:17.956-05:00  WARN 9572 --- [parking-system] [main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 448e98c0-27d8-45ae-a5b7-b333565989a4
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-04-11T16:49:17.968-05:00  INFO 9572 --- [parking-system] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-04-11T16:49:18.961-05:00  INFO 9572 --- [parking-system] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-11T16:49:18.972-05:00  INFO 9572 --- [parking-system] [main] c.b.s.p.ParkingSystemApplication         : Started ParkingSystemApplication in 9.225 seconds (process running for 9.957)
+2026-04-11T16:49:18.978-05:00  WARN 9572 --- [parking-system] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-04-11T16:49:18.978-05:00  WARN 9572 --- [parking-system] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-04-11T16:49:28.762-05:00  INFO 9572 --- [parking-system] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-11T16:49:28.763-05:00  INFO 9572 --- [parking-system] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-11T16:49:28.765-05:00  INFO 9572 --- [parking-system] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-04-11T16:49:39.165-05:00  INFO 9572 --- [parking-system] [http-nio-8080-exec-3] c.b.s.p.s.implement.RecordServiceImpl    : Record finished successfully ticketCode=F5ABB723 totalMinutes=6 amountPaid=240.0
+2026-04-11T16:49:53.548-05:00  INFO 9572 --- [parking-system] [http-nio-8080-exec-4] .b.s.p.n.w.s.i.WhatsappSenderServiceImpl : WhatsApp sent successfully to=+573208571256 sid=SM69637dc4e16e4e175886f3920ba9084e
+2026-04-11T16:49:53.549-05:00  INFO 9572 --- [parking-system] [http-nio-8080-exec-4] c.b.s.p.s.implement.RecordServiceImpl    : Record created successfully with id=11 and ticketCode=97C09ABC
+2026-04-11T16:50:57.220-05:00  INFO 9572 --- [parking-system] [http-nio-8080-exec-7] c.b.s.p.s.implement.RecordServiceImpl    : Record finished successfully ticketCode=97C09ABC totalMinutes=1 amountPaid=40.0
+2026-04-11T16:51:08.830-05:00  INFO 9572 --- [parking-system] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-11T16:51:08.865-05:00  INFO 9572 --- [parking-system] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-11T16:51:08.872-05:00  INFO 9572 --- [parking-system] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-11T16:51:08.876-05:00  INFO 9572 --- [parking-system] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-11T16:51:08.883-05:00  INFO 9572 --- [parking-system] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

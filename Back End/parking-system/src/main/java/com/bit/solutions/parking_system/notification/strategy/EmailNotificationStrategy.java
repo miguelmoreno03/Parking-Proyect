@@ -1,7 +1,7 @@
 package com.bit.solutions.parking_system.notification.strategy;
 import com.bit.solutions.parking_system.entity.Record;
-import com.bit.solutions.parking_system.notification.Email.Interfaces.EmailSenderService;
-import com.bit.solutions.parking_system.notification.Email.Interfaces.EmailTemplateService;
+import com.bit.solutions.parking_system.notification.Email.service.Interfaces.EmailSenderService;
+import com.bit.solutions.parking_system.notification.Email.service.Interfaces.EmailTemplateService;
 import com.bit.solutions.parking_system.notification.QR.QrCodeService;
 import com.bit.solutions.parking_system.notification.enums.NotificationMethod;
 import lombok.RequiredArgsConstructor;

@@ -11,4 +11,5 @@ public interface RecordRepository extends JpaRepository <Record,Long> {
     Optional<Record> findByTicketCode(String ticketCode);
     List<Record> findByStatus(Status status);
     boolean existsByPlateAndStatus(String plate, Status status);
+    long countByStatus(Status status);
 }

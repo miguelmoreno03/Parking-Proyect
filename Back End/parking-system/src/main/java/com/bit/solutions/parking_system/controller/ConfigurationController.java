@@ -2,6 +2,7 @@ package com.bit.solutions.parking_system.controller;
 import com.bit.solutions.parking_system.dto.ConfigurationCreateDTO;
 import com.bit.solutions.parking_system.dto.ConfigurationResponseDTO;
 import com.bit.solutions.parking_system.dto.ConfigurationUpdateDTO;
+import com.bit.solutions.parking_system.dto.OccupancyResponseDTO;
 import com.bit.solutions.parking_system.entity.Configuration;
 import com.bit.solutions.parking_system.mappers.ConfigurationMapper;
 import com.bit.solutions.parking_system.service.interfaces.ConfigurationService;
@@ -17,7 +18,10 @@ import java.net.URI;
 @RequiredArgsConstructor
 public class ConfigurationController {
     private final ConfigurationService configurationService;
-
+    @GetMapping("/occupancy")
+    public ResponseEntity<OccupancyResponseDTO> getCurrentOccupancy() {
+        return ResponseEntity.ok(configurationService.getCurrentOccupancy());
+    }
     @GetMapping("/{id}")
     public ResponseEntity<ConfigurationResponseDTO> getById(@PathVariable Long id) {
         Configuration config = configurationService.getConfigurationById(id);

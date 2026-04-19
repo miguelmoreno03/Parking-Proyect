@@ -11,6 +11,7 @@ import com.bit.solutions.parking_system.notification.service.interfaces.Notifica
 import com.bit.solutions.parking_system.repository.RateRepository;
 import com.bit.solutions.parking_system.repository.RecordRepository;
 import com.bit.solutions.parking_system.repository.UserRepository;
+import com.bit.solutions.parking_system.service.interfaces.ConfigurationService;
 import com.bit.solutions.parking_system.service.interfaces.RecordService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +28,7 @@ public class RecordServiceImpl implements RecordService {
     private final UserRepository userRepository;
     private final RateRepository rateRepository;
     private final NotificationService notificationService;
+    private final ConfigurationService configurationService;
 
     @Override
     public List<Record> getAllRecords() {
@@ -70,6 +72,7 @@ public class RecordServiceImpl implements RecordService {
         record.setRate(rate);
         record.setEntryTime(LocalDateTime.now());
         Record saved = recordRepository.save(record);
+        configurationService.decreaseAvailableSpaces();
         notificationService.sendNotification(saved);
         log.info("Record created successfully with id={} and ticketCode={}", saved.getId(), saved.getTicketCode());
         return saved;
@@ -116,6 +119,9 @@ public class RecordServiceImpl implements RecordService {
                     log.warn("Record not found for deletion with id={}", id);
                     return new ResourceNotFoundException("Record not found with id: " + id);
                 });
+        if (existing.getStatus()==Status.ACTIVE){
+            configurationService.increaseAvailableSpaces();
+        }
         recordRepository.delete(existing);
         log.info("Record deleted successfully with id={}", id);
     }
@@ -153,7 +159,7 @@ public class RecordServiceImpl implements RecordService {
         record.setAmountPaid(amount);
 
         record.setStatus(Status.FINISHED);
-
+        configurationService.increaseAvailableSpaces();
         Record updated = recordRepository.save(record);
         log.info("Record finished successfully ticketCode={} totalMinutes={} amountPaid={}",
                 ticketCode, minutes, amount);

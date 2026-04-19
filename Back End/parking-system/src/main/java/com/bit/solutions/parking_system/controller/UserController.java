@@ -19,24 +19,24 @@ import java.util.List;
 @RequestMapping("users")
 @RequiredArgsConstructor
 public class UserController {
+
     private final UserService userService;
 
     @GetMapping
     public ResponseEntity<List<UserResponseDTO>> getAll() {
         List<User> users = userService.getAllUsers();
         List<UserResponseDTO> response = new ArrayList<>();
+
         for (User user : users) {
             response.add(UserMapper.toDTO(user));
         }
+
         return ResponseEntity.ok(response);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<UserResponseDTO> getById(@PathVariable Long id) {
         User user = userService.getUserById(id);
-        if (user == null) {
-            return ResponseEntity.notFound().build();
-        }
         return ResponseEntity.ok(UserMapper.toDTO(user));
     }
 
@@ -44,6 +44,7 @@ public class UserController {
     public ResponseEntity<UserResponseDTO> create(@Valid @RequestBody UserCreateDTO dto) {
         User user = UserMapper.toEntity(dto);
         User saved = userService.createUser(user);
+
         return ResponseEntity
                 .created(URI.create("/users/" + saved.getId()))
                 .body(UserMapper.toDTO(saved));
@@ -53,6 +54,7 @@ public class UserController {
     public ResponseEntity<UserResponseDTO> update(
             @PathVariable Long id,
             @Valid @RequestBody UserUpdateDTO dto) {
+
         User user = new User();
         user.setName(dto.getName());
         user.setUsername(dto.getUsername());
@@ -61,16 +63,12 @@ public class UserController {
         user.setActive(dto.getActive());
 
         User updated = userService.updateUser(id, user);
-        if (updated == null) {
-            return ResponseEntity.notFound().build();
-        }
         return ResponseEntity.ok(UserMapper.toDTO(updated));
     }
+
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> delete(@PathVariable Long id) {
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
         userService.deleteUser(id);
-        return ResponseEntity.ok("User with id " + id + " was successfully deleted");
+        return ResponseEntity.noContent().build();
     }
 }
-
-

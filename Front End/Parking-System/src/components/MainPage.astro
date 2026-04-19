@@ -1,0 +1,238 @@
+---
+import Header from "./Header.astro";
+import Footer from "./Footer.astro";
+
+const portalTransition = {
+  forwards: {
+    old: {
+      name: "portal-old-back",
+      duration: "1.1s",
+      easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+      fillMode: "both",
+    },
+    new: {
+      name: "portal-new-back",
+      duration: "1.1s",
+      easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+      fillMode: "both",
+    },
+  },
+  backwards: {
+    old: {
+      name: "portal-old-forward",
+      duration: "1.1s",
+      easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+      fillMode: "both",
+    },
+    new: {
+      name: "portal-new-forward",
+      duration: "1.1s",
+      easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+      fillMode: "both",
+    },
+  },
+};
+---
+
+<div class="flex flex-col min-h-screen">
+  <Header />
+
+  <main  transition:animate={portalTransition} class="flex-grow flex flex-col items-center justify-center pt-24 pb-12 px-6">
+    <div class="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="lg:col-span-7 space-y-12">
+        <div class="space-y-4">
+          <h1 class="text-5xl font-bold tracking-tight text-white leading-tight">
+            Integrated Control <br />
+            <span class="text-primary">Terminal Access</span>
+          </h1>
+
+          <p class="text-slate-400 text-lg max-w-lg leading-relaxed">
+            Welcome to the central gateway for Architectural Parking operations.
+            Authenticate to manage facility flows, permits, and real-time enforcement.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <a
+            href="/Login?intent=dashboard"
+            class="group relative bg-slate-900 p-8 rounded-sm high-contrast-shadow role-rail-primary transition-all hover:bg-slate-800/80 cursor-pointer border border-white/5 block"
+        >
+            <div class="flex flex-col h-full justify-between gap-8">
+            <div class="space-y-4">
+                <span class="material-symbols-outlined text-primary text-4xl">login</span>
+                <h3 class="text-xl font-bold text-white">Log In to System</h3>
+                <p class="text-sm text-slate-400 leading-snug">
+                Access your personal dashboard, active shifts, and zone assignments.
+                </p>
+            </div>
+
+            <div class="flex items-center text-primary font-semibold text-sm">
+                Enter Terminal
+                <span class="material-symbols-outlined ml-2 text-sm">arrow_forward</span>
+            </div>
+            </div>
+        </a>
+
+        <a
+        href="/Login?intent=create-user"
+        class="group relative bg-slate-900 p-8 rounded-sm high-contrast-shadow role-rail-tertiary transition-all hover:bg-slate-800/80 cursor-pointer border border-white/5 block"
+        >
+        <div class="flex flex-col h-full justify-between gap-8">
+            <div class="space-y-4">
+            <span class="material-symbols-outlined text-tertiary text-4xl">how_to_reg</span>
+            <h3 class="text-xl font-bold text-white">New Operator Registration</h3>
+            <p class="text-sm text-slate-400 leading-snug">
+                First-time setup for authorized operators and administrative staff.
+            </p>
+            </div>
+            <div class="flex items-center text-tertiary font-semibold text-sm">
+            Begin Setup
+            <span class="material-symbols-outlined ml-2 text-sm">arrow_forward</span>
+            </div>
+        </div>
+        </a>
+        </div>
+
+        <div class="pt-8 border-t border-white/10">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-8">
+            Preparation Sequence
+          </h4>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="flex gap-4">
+              <span class="text-3xl font-light text-slate-700">01</span>
+              <div class="space-y-1">
+                <p class="text-sm font-bold text-slate-200">Select Access Type</p>
+                <p class="text-xs text-slate-500">
+                  Choose Operator or Administrator terminal.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <span class="text-3xl font-light text-slate-700">02</span>
+              <div class="space-y-1">
+                <p class="text-sm font-bold text-slate-200">Enter Credentials</p>
+                <p class="text-xs text-slate-500">
+                  Use your encrypted biometric or password key.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <span class="text-3xl font-light text-slate-700">03</span>
+              <div class="space-y-1">
+                <p class="text-sm font-bold text-slate-200">Begin Shift</p>
+                <p class="text-xs text-slate-500">
+                  Sync real-time data for your assigned zone.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5">
+        <div class="bg-slate-900 border border-white/10 rounded-sm p-10 text-white space-y-10 relative overflow-hidden high-contrast-shadow">
+          <div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-3xl -mr-20 -mt-20"></div>
+
+          <div class="relative z-10 space-y-2">
+            <h2 class="text-2xl font-bold">HQ Operational Pulse</h2>
+            <p class="text-slate-400 text-sm">Zone Alpha-4 Central Monitoring</p>
+          </div>
+
+          <div class="relative z-10 space-y-6">
+            <div class="bg-white/5 p-6 rounded-sm border border-white/10 flex items-center justify-between">
+              <div class="flex items-center gap-4">
+                <span class="material-symbols-outlined text-primary">directions_car</span>
+                <div>
+                  <p class="text-[10px] uppercase tracking-wider text-slate-500">
+                    Current Occupancy
+                  </p>
+                  <p class="text-2xl font-bold">
+                    65% <span class="text-xs text-tertiary font-normal ml-2">Stable</span>
+                  </p>
+                </div>
+              </div>
+
+              <div class="w-16 h-1 bg-white/10 rounded-sm overflow-hidden">
+                <div class="w-2/3 h-full bg-primary"></div>
+              </div>
+            </div>
+
+            <div class="bg-white/5 p-6 rounded-sm border border-white/10 flex items-center gap-4">
+            <span class="material-symbols-outlined text-slate-400">schedule</span>
+            <div>
+                <p class="text-[10px] uppercase tracking-wider text-slate-500">Local System Time</p>
+                <p id="local-system-time" class="text-2xl font-bold">
+                --:--
+                <span class="text-xs font-normal text-slate-400">--</span>
+                </p>
+            </div>
+            </div>
+
+            <div class="rounded-sm overflow-hidden relative h-40 border border-white/10">
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7waLrtQUPxqyjixm3KKVwkCB116tgPF7Yjb2csxyx5yd9-sVFQUNys8rEqSqACw8wBC4vHZxDc_sZR8O3zfjd2X_sN8HGmSKn0iu1H2jxBguZwdX_nO1-vMu5U0ElMHA4VVGNTBGJE86yiuIPPOVv1TFVs03EqMpEL3pPZlGVhp8s3vPBOxyY_8PHmL5Ql1p-y3wIacHSupUc2U8WH6awdkDjCTJ8XmPPK2NX9r3dtITfKVBWf36-jCSLI0WQrigXCKY82EBUTFyb"
+                alt="Parking Lot View"
+                class="w-full h-full object-cover opacity-40 grayscale contrast-125"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+              <div class="absolute bottom-4 left-4 flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-error animate-pulse"></span>
+                <span class="text-xs font-bold text-white uppercase tracking-wider">
+                  Live Feed: Zone A North Entrance
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative z-10 pt-4">
+            <button class="w-full py-4 bg-primary text-white font-bold rounded-sm shadow-xl shadow-primary/20 hover:bg-blue-700 transition-all flex items-center justify-center gap-2">
+              <span
+                class="material-symbols-outlined text-lg"
+                style="font-variation-settings: 'FILL' 1;"
+              >
+                emergency_home
+              </span>
+              Contact On-Call Supervisor
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</div>
+<script is:inline>
+  let localSystemTimeInterval;
+
+  function renderLocalSystemTime() {
+    const timeElement = document.getElementById("local-system-time");
+    if (!timeElement) return;
+
+    const now = new Date();
+    const hours24 = now.getHours();
+    const hours12 = hours24 % 12 || 12;
+    const minutes = String(now.getMinutes()).padStart(2, "0");
+    const period = hours24 >= 12 ? "PM" : "AM";
+
+    timeElement.innerHTML =
+      `${String(hours12).padStart(2, "0")}:${minutes} ` +
+      `<span class="text-xs font-normal text-slate-400">${period}</span>`;
+  }
+
+  function setupLocalSystemTime() {
+    clearInterval(localSystemTimeInterval);
+    renderLocalSystemTime();
+    localSystemTimeInterval = setInterval(renderLocalSystemTime, 1000);
+  }
+
+  setupLocalSystemTime();
+
+  document.addEventListener("astro:page-load", setupLocalSystemTime);
+  document.addEventListener("astro:before-swap", () => {
+    clearInterval(localSystemTimeInterval);
+  });
+</script>

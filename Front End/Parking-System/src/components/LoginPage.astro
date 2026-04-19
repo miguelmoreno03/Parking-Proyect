@@ -1,0 +1,302 @@
+---
+const portalTransition = {
+  forwards: {
+    old: {
+      name: "portal-old-forward",
+      duration: "1.1s",
+      easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+      fillMode: "both",
+    },
+    new: {
+      name: "portal-new-forward",
+      duration: "1.1s",
+      easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+      fillMode: "both",
+    },
+  },
+  backwards: {
+    old: {
+      name: "portal-old-back",
+      duration: "1.1s",
+      easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+      fillMode: "both",
+    },
+    new: {
+      name: "portal-new-back",
+      duration: "1.1s",
+      easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+      fillMode: "both",
+    },
+  },
+};
+
+const API_URL = import.meta.env.PUBLIC_API_URL;
+---
+
+<div class="bg-[#0b1326] text-[#dae2fd] min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none opacity-20">
+    <div class="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-[#0f69dc] blur-[120px] rounded-full"></div>
+    <div class="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-[#3a4a5f] blur-[100px] rounded-full"></div>
+
+    <div
+      class="absolute inset-0"
+      style="background-image: radial-gradient(circle, #434655 1px, transparent 1px); background-size: 40px 40px;"
+    ></div>
+  </div>
+
+  <main transition:animate={portalTransition} class="z-10 w-full max-w-[440px] px-6">
+    <div class="mb-10 text-center">
+      <div class="inline-flex items-center justify-center p-3 bg-[#171f33] rounded-lg mb-6 border border-[#434655]/20 shadow-2xl">
+        <span class="material-symbols-outlined text-[#adc6ff] text-3xl">garage</span>
+      </div>
+
+      <h1 class="text-lg font-black tracking-tighter text-[#adc6ff] uppercase mb-2">
+        Architectural Parking
+      </h1>
+      <p class="text-sm text-[#c3c6d7] tracking-widest uppercase opacity-60">
+        Administrative Terminal v4.2
+      </p>
+    </div>
+
+    <div class="bg-[#131b2e] border border-[#434655]/15 rounded-xl shadow-[0_32px_64px_-16px_rgba(6,14,32,0.8)] overflow-hidden">
+      <div class="p-8 sm:p-10">
+        <div class="mb-8">
+          <h2 class="text-2xl font-bold tracking-tight text-[#dae2fd] mb-2">
+            Log In to System
+          </h2>
+          <p class="text-[#c3c6d7] text-sm">
+            Access your dashboard, shifts, and assignments.
+          </p>
+        </div>
+
+        <form id="login-form" class="space-y-6">
+          <div class="space-y-2">
+            <label class="block text-[10px] font-bold tracking-[0.15em] text-[#c3c6d7] uppercase ml-1">
+              Username
+            </label>
+
+            <div class="relative group">
+              <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <span class="material-symbols-outlined text-[#8d90a0] text-lg group-focus-within:text-[#adc6ff] transition-colors">
+                  badge
+                </span>
+              </div>
+
+              <input
+                id="employee-input"
+                class="w-full bg-[#171f33] border-none focus:ring-1 focus:ring-[#adc6ff]/40 rounded-lg py-3.5 pl-12 pr-4 text-[#dae2fd] text-sm transition-all duration-200 placeholder:text-[#8d90a0]/50"
+                placeholder="Mig0032"
+                type="text"
+              />
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <div class="flex justify-between items-end">
+              <label class="block text-[10px] font-bold tracking-[0.15em] text-[#c3c6d7] uppercase ml-1">
+                Password
+              </label>
+
+              <a
+                class="text-[10px] font-bold tracking-widest text-[#adc6ff] uppercase hover:opacity-80 transition-opacity"
+                href="#"
+              >
+                Forgot password?
+              </a>
+            </div>
+
+            <div class="relative group">
+              <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <span class="material-symbols-outlined text-[#8d90a0] text-lg group-focus-within:text-[#adc6ff] transition-colors">
+                  lock
+                </span>
+              </div>
+
+              <input
+                id="password-input"
+                class="w-full bg-[#171f33] border-none focus:ring-1 focus:ring-[#adc6ff]/40 rounded-lg py-3.5 pl-12 pr-12 text-[#dae2fd] text-sm transition-all duration-200"
+                placeholder="••••••••••••"
+                type="password"
+              />
+
+              <div class="absolute inset-y-0 right-0 pr-4 flex items-center">
+                <button
+                  id="toggle-password"
+                  class="text-[#8d90a0] hover:text-[#dae2fd] transition-colors"
+                  type="button"
+                  aria-label="Toggle password visibility"
+                >
+                  <span id="toggle-password-icon" class="material-symbols-outlined text-lg">
+                    visibility_off
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-center">
+            <label class="relative flex items-center cursor-pointer">
+              <input
+                class="peer h-4 w-4 rounded border-[#434655] bg-[#171f33] text-[#0f69dc] focus:ring-offset-[#0b1326] focus:ring-[#adc6ff]/30 transition-all"
+                type="checkbox"
+              />
+              <span class="ml-3 text-[11px] font-medium text-[#c3c6d7] tracking-wide uppercase select-none">
+                Remember me
+              </span>
+            </label>
+          </div>
+
+          <div class="space-y-3">
+            <button
+              class="w-full bg-gradient-to-br from-[#adc6ff] to-[#0f69dc] text-[#002e6a] font-bold py-4 rounded-lg shadow-lg shadow-[#0f69dc]/20 hover:shadow-[#0f69dc]/40 hover:scale-[1.01] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2"
+              type="submit"
+            >
+              <span class="tracking-widest uppercase text-sm">Enter Terminal</span>
+              <span class="material-symbols-outlined text-lg">login</span>
+            </button>
+
+            <a
+              href="/"
+              class="w-full bg-gradient-to-br from-[#adc6ff] to-[#0f69dc] text-[#002e6a] font-bold py-4 rounded-lg shadow-lg shadow-[#0f69dc]/20 hover:shadow-[#0f69dc]/40 hover:scale-[1.01] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2"
+            >
+              <span class="material-symbols-outlined text-lg">arrow_back</span>
+              <span class="tracking-widest uppercase text-sm">Back to Portal</span>
+            </a>
+          </div>
+        </form>
+      </div>
+
+      <div class="bg-[#222a3d] px-8 py-4 flex items-center justify-center gap-3">
+        <span class="material-symbols-outlined text-[#adc6ff] text-base">verified_user</span>
+        <p class="text-[10px] font-medium text-[#a9bad3] tracking-wider uppercase opacity-70">
+          Encrypted institutional gateway. Session monitoring active.
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-8 flex justify-center gap-8 text-[10px] font-bold tracking-[0.2em] text-[#8d90a0] uppercase opacity-40">
+      <div class="flex items-center gap-2">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+        System Operational
+      </div>
+
+      <div>Node: PX-002</div>
+    </div>
+  </main>
+
+  <div class="hidden lg:block fixed left-12 bottom-12 w-48">
+    <div class="space-y-4 opacity-30">
+      <div class="h-[1px] w-full bg-[#434655]"></div>
+
+      <div class="flex justify-between items-center text-[10px] font-mono text-[#8d90a0]">
+        <span>COORD: 34.0522 N</span>
+        <span>ADMIN v4.2</span>
+      </div>
+
+      <div class="aspect-video bg-[#2d3449] rounded border border-[#434655]/20 flex items-center justify-center overflow-hidden">
+        <div class="w-full h-full p-2">
+          <div class="w-full h-full bg-[#0b1326] relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10 flex items-center justify-center">
+              <span class="material-symbols-outlined text-9xl">token</span>
+            </div>
+
+            <div class="absolute bottom-2 left-2 right-2 flex gap-1 h-1">
+              <div class="flex-1 bg-[#adc6ff]"></div>
+              <div class="flex-1 bg-[#8d90a0]/20"></div>
+              <div class="flex-1 bg-[#8d90a0]/20"></div>
+              <div class="flex-1 bg-[#8d90a0]/20"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline define:vars={{ API_URL }}>
+  function setupPasswordToggle() {
+    const input = document.getElementById("password-input");
+    const button = document.getElementById("toggle-password");
+    const icon = document.getElementById("toggle-password-icon");
+
+    if (!input || !button || !icon || button.dataset.passwordBound === "true") return;
+
+    button.dataset.passwordBound = "true";
+
+    button.addEventListener("click", () => {
+      const hidden = input.type === "password";
+      input.type = hidden ? "text" : "password";
+      icon.textContent = hidden ? "visibility" : "visibility_off";
+    });
+  }
+
+  function setupLoginSubmit() {
+    const form = document.getElementById("login-form");
+    const usernameInput = document.getElementById("employee-input");
+    const passwordInput = document.getElementById("password-input");
+
+    if (!form || !usernameInput || !passwordInput || form.dataset.loginBound === "true") return;
+
+    form.dataset.loginBound = "true";
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const params = new URLSearchParams(window.location.search);
+      const intent = params.get("intent") || "dashboard";
+
+      const username = usernameInput.value.trim();
+      const password = passwordInput.value;
+
+      if (!username || !password) {
+        alert("Completa tus credenciales.");
+        return;
+      }
+
+      try {
+        const response = await fetch(`${API_URL}/auth/login`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify({
+            username,
+            password,
+          }),
+        });
+
+        const data = await response.json();
+        console.log("LOGIN RESPONSE:", data);
+
+        if (!response.ok) {
+          alert(data.message || "Credenciales inválidas.");
+          return;
+        }
+
+        const role = data.role;
+
+        if (intent === "create-user") {
+          if (role === "ROLE_ADMIN") {
+            window.location.href = "/create-user";
+          } else {
+            window.location.href = "/access-denied";
+          }
+        } else {
+          window.location.href = "/dashboard";
+        }
+      } catch (error) {
+        console.error("Error en login:", error);
+        alert("Ocurrió un error al iniciar sesión.");
+      }
+    });
+  }
+
+  function setupPage() {
+    setupPasswordToggle();
+    setupLoginSubmit();
+  }
+
+  setupPage();
+  document.addEventListener("astro:page-load", setupPage);
+</script>

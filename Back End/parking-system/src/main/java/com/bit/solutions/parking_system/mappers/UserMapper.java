@@ -1,32 +1,35 @@
 package com.bit.solutions.parking_system.mappers;
+
 import com.bit.solutions.parking_system.dto.UserCreateDTO;
 import com.bit.solutions.parking_system.dto.UserResponseDTO;
 import com.bit.solutions.parking_system.dto.UserUpdateDTO;
 import com.bit.solutions.parking_system.entity.User;
 
 public final class UserMapper {
+
     private UserMapper() {}
-    // CREATE
+
     public static User toEntity(UserCreateDTO dto) {
         if (dto == null) return null;
+
         return User.builder()
-                .name(dto.getName())
-                .username(dto.getUserName())
+                .name(clean(dto.getName()))
+                .username(clean(dto.getUsername()))
                 .password(dto.getPassword())
                 .role(dto.getRole())
                 .active(true)
                 .build();
     }
-    // UPDATE
+
     public static void updateEntity(User existing, UserUpdateDTO dto) {
         if (existing == null || dto == null) return;
 
         if (dto.getName() != null) {
-            existing.setName(dto.getName());
+            existing.setName(clean(dto.getName()));
         }
 
         if (dto.getUsername() != null) {
-            existing.setUsername(dto.getUsername());
+            existing.setUsername(clean(dto.getUsername()));
         }
 
         if (dto.getPassword() != null) {
@@ -42,9 +45,9 @@ public final class UserMapper {
         }
     }
 
-    // RESPONSE
     public static UserResponseDTO toDTO(User user) {
         if (user == null) return null;
+
         return UserResponseDTO.builder()
                 .id(user.getId())
                 .name(user.getName())
@@ -55,5 +58,7 @@ public final class UserMapper {
                 .build();
     }
 
-
+    private static String clean(String value) {
+        return value == null ? null : value.trim();
+    }
 }

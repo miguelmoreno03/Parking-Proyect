@@ -1,11 +1,20 @@
 package com.bit.solutions.parking_system.exceptions;
+
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+
 import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 @Slf4j
@@ -13,61 +22,65 @@ import java.util.UUID;
 public class GlobalExceptions {
 
     @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<ErrorResponse> processErrorNotFound(
+    public ResponseEntity<ErrorResponse> handleNotFound(
             ResourceNotFoundException ex,
             HttpServletRequest request) {
-
-        String traceId = UUID.randomUUID().toString();
-
-        log.warn("HTTP 404 NOT_FOUND | traceId={} | path={} | method={} | exception={} | message={}",
-                traceId,
-                request.getRequestURI(),
-                request.getMethod(),
-                ex.getClass().getSimpleName(),
-                ex.getMessage()
-        );
-
-        ErrorResponse error = ErrorResponse.builder()
-                .message(ex.getMessage())
-                .status(HttpStatus.NOT_FOUND.value())
-                .timestamp(LocalDateTime.now())
-                .path(request.getRequestURI())
-                .traceId(traceId)
-                .build();
-
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+        return buildResponse(ex.getMessage(), HttpStatus.NOT_FOUND, request, null, ex);
     }
 
     @ExceptionHandler(BadRequestException.class)
-    public ResponseEntity<ErrorResponse> processErrorBadRequest(
+    public ResponseEntity<ErrorResponse> handleBadRequest(
             BadRequestException ex,
             HttpServletRequest request) {
+        return buildResponse(ex.getMessage(), HttpStatus.BAD_REQUEST, request, null, ex);
+    }
 
-        String traceId = UUID.randomUUID().toString();
+    @ExceptionHandler(ConflictException.class)
+    public ResponseEntity<ErrorResponse> handleConflict(
+            ConflictException ex,
+            HttpServletRequest request) {
+        return buildResponse(ex.getMessage(), HttpStatus.CONFLICT, request, null, ex);
+    }
 
-        log.warn("HTTP 400 BAD_REQUEST | traceId={} | path={} | method={} | exception={} | message={}",
-                traceId,
-                request.getRequestURI(),
-                request.getMethod(),
-                ex.getClass().getSimpleName(),
-                ex.getMessage()
-        );
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ErrorResponse> handleValidation(
+            MethodArgumentNotValidException ex,
+            HttpServletRequest request) {
 
-        ErrorResponse error = ErrorResponse.builder()
-                .message(ex.getMessage())
-                .status(HttpStatus.BAD_REQUEST.value())
-                .timestamp(LocalDateTime.now())
-                .path(request.getRequestURI())
-                .traceId(traceId)
-                .build();
+        Map<String, String> fields = new HashMap<>();
 
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+        for (FieldError error : ex.getBindingResult().getFieldErrors()) {
+            fields.put(error.getField(), error.getDefaultMessage());
+        }
+
+        return buildResponse("Validation failed", HttpStatus.BAD_REQUEST, request, fields, ex);
+    }
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<ErrorResponse> handleNotReadable(
+            HttpMessageNotReadableException ex,
+            HttpServletRequest request) {
+        return buildResponse("Malformed JSON request", HttpStatus.BAD_REQUEST, request, null, ex);
+    }
+
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ResponseEntity<ErrorResponse> handleTypeMismatch(
+            MethodArgumentTypeMismatchException ex,
+            HttpServletRequest request) {
+        return buildResponse("Invalid parameter: " + ex.getName(), HttpStatus.BAD_REQUEST, request, null, ex);
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<ErrorResponse> handleDataIntegrity(
+            DataIntegrityViolationException ex,
+            HttpServletRequest request) {
+        return buildResponse("Database constraint violation", HttpStatus.CONFLICT, request, null, ex);
     }
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleGeneric(
             Exception ex,
-            HttpServletRequest request){
+            HttpServletRequest request) {
 
         String traceId = UUID.randomUUID().toString();
 
@@ -83,11 +96,44 @@ public class GlobalExceptions {
         ErrorResponse error = ErrorResponse.builder()
                 .message("Internal server error")
                 .status(HttpStatus.INTERNAL_SERVER_ERROR.value())
+                .error(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase())
                 .timestamp(LocalDateTime.now())
                 .path(request.getRequestURI())
                 .traceId(traceId)
                 .build();
 
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
+    }
+
+    private ResponseEntity<ErrorResponse> buildResponse(
+            String message,
+            HttpStatus status,
+            HttpServletRequest request,
+            Map<String, String> fields,
+            Exception ex) {
+
+        String traceId = UUID.randomUUID().toString();
+
+        log.warn("HTTP {} {} | traceId={} | path={} | method={} | exception={} | message={}",
+                status.value(),
+                status.getReasonPhrase(),
+                traceId,
+                request.getRequestURI(),
+                request.getMethod(),
+                ex.getClass().getSimpleName(),
+                message
+        );
+
+        ErrorResponse error = ErrorResponse.builder()
+                .message(message)
+                .status(status.value())
+                .error(status.getReasonPhrase())
+                .timestamp(LocalDateTime.now())
+                .path(request.getRequestURI())
+                .traceId(traceId)
+                .fields(fields)
+                .build();
+
+        return ResponseEntity.status(status).body(error);
     }
 }

@@ -1,0 +1,30 @@
+---
+import Layout from "../layouts/Layout.astro";
+import MainPage from "../components/MainPage.astro";
+
+const API_URL = import.meta.env.PUBLIC_API_URL;
+---
+
+<Layout>
+  <MainPage />
+</Layout>
+
+<script is:inline define:vars={{ API_URL }}>
+  async function redirectLoggedUser() {
+    try {
+      const response = await fetch(`${API_URL}/auth/refresh`, {
+        method: "POST",
+        credentials: "include",
+      });
+
+      if (response.ok) {
+        window.location.href = "/dashboard";
+      }
+    } catch (error) {
+      console.error("No active session on index:", error);
+    }
+  }
+
+  redirectLoggedUser();
+  document.addEventListener("astro:page-load", redirectLoggedUser);
+</script>

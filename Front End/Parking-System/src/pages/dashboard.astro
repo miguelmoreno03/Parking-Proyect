@@ -1,0 +1,38 @@
+---
+import Layout from "../layouts/Layout.astro";
+import DashboardPage from "../components/DashboardPage.astro";
+
+const API_URL = import.meta.env.PUBLIC_API_URL;
+---
+
+<Layout>
+  <div id="dashboard-route" data-api-url={API_URL}>
+    <DashboardPage />
+  </div>
+</Layout>
+
+<script is:inline>
+  async function protectDashboardRoute() {
+    const route = document.getElementById("dashboard-route");
+    const apiUrl = route?.dataset.apiUrl;
+
+    if (!route || !apiUrl) return;
+
+    try {
+      const response = await fetch(`${apiUrl}/auth/refresh`, {
+        method: "POST",
+        credentials: "include",
+      });
+
+      if (!response.ok) {
+        window.location.href = "/";
+      }
+    } catch (error) {
+      console.error("Dashboard guard error:", error);
+      window.location.href = "/";
+    }
+  }
+
+  protectDashboardRoute();
+  document.addEventListener("astro:page-load", protectDashboardRoute);
+</script>

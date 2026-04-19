@@ -1,5 +1,6 @@
 package com.bit.solutions.parking_system.service.implement;
 
+import com.bit.solutions.parking_system.dto.OccupancyResponseDTO;
 import com.bit.solutions.parking_system.entity.Configuration;
 import com.bit.solutions.parking_system.exceptions.BadRequestException;
 import com.bit.solutions.parking_system.exceptions.ResourceNotFoundException;
@@ -100,6 +101,24 @@ public class ConfigurationServiceImpl implements ConfigurationService {
         config.setAvailableSpaces(config.getAvailableSpaces() + 1);
         configurationRepository.save(config);
         log.info("Space released. Available spaces={}", config.getAvailableSpaces());
+    }
+
+    @Override
+    public OccupancyResponseDTO getCurrentOccupancy() {
+        log.debug("Fetching current occupancy");
+        Configuration config = getSingleConfiguration();
+        int totalCapacity = config.getTotalCapacity();
+        int availableSpaces = config.getAvailableSpaces();
+        int occupiedSpaces = totalCapacity - availableSpaces;
+        double occupancyPercentage = totalCapacity > 0
+                ? (occupiedSpaces * 100.0) / totalCapacity
+                : 0.0;
+        return OccupancyResponseDTO.builder()
+                .totalCapacity(totalCapacity)
+                .availableSpaces(availableSpaces)
+                .occupiedSpaces(occupiedSpaces)
+                .occupancyPercentage(occupancyPercentage)
+                .build();
     }
 
     private Configuration getSingleConfiguration() {
